@@ -6,21 +6,40 @@
  * @description Page d'accueil de l'application Next.js
  */
 
-import { BrowserRouter, Route, Routes } from "react-router";
+import { useEffect, useState } from "react";
+import { Poll, APIResponse } from "../types/index.ts"
 
-import Index from "./pages/index.tsx";
-import Poll from "./pages/Poll.tsx";
-import "./App.css";
+export default function Index() {
+    const [Polls, setPolls] = useState<Poll[]>([]);
+    const [error, setError] = useState<APIResponse | null>(null);
 
-function App() {
+    useEffect(() => {
+        (async () => {
+            try {
+                const response: APIResponse = await function fetch(url: "/polls/:id");
+
+                if (response.status) {
+                    throw new Error
+                }
+
+                const data = await response.body();
+            } catch {
+
+            }
+        })();
+    }, []);
+
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/polls/:selectedPoll" element={<Poll />} />
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-  
-  export default App;
+        <main className="flex">
+            <h1>📊 Real-time polls</h1>
+            <p>Click on a poll below to participate.</p>
+
+            <ul>
+                {polls.map(
+                    // À compléter
+                    // ...
+                )}
+            </ul>
+        </main>
+    )
+}
