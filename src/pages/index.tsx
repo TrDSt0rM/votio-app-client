@@ -1,9 +1,9 @@
 /**
  * @type {import('next').NextPage}
- * @file src/App.tsx
+ * @file src/pages/index.tsx
  * @author Alex plociennik
  * @date 2026-02-04
- * @description Composant principal de l'application React avec routage
+ * @description Page d'accueil de l'application Next.js
  */
 
 import { BrowserRouter, Route, Routes } from "react-router";
