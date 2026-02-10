@@ -11,13 +11,16 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Index from "./pages/index.tsx";
 import PollDetail from "./pages/PollDetail.tsx";
 import "./App.css";
+import MainLayout from "./components/MainLayout.tsx";
 
 function App() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/polls/:selectedPoll" element={<PollDetail />} />
+          <Route element={<MainLayout />}> 
+            <Route path="/" element={<Index />} />
+            <Route path="/polls/:selectedPoll" element={<PollDetail />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     );

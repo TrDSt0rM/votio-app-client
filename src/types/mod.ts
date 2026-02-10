@@ -1,5 +1,5 @@
 /**
- * @types
+ * @types point d'entrée unique pour les types et interfaces de la partie client
  * @file src/types/mod.ts
  * @author Alex plociennik
  * @date 2026-02-04
