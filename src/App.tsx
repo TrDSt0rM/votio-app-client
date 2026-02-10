@@ -9,7 +9,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 
 import Index from "./pages/index.tsx";
-import Poll from "./pages/Poll.tsx";
+import PollDetail from "./pages/PollDetail.tsx";
 import "./App.css";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/polls/:selectedPoll" element={<Poll />} />
+          <Route path="/polls/:selectedPoll" element={<PollDetail />} />
         </Routes>
       </BrowserRouter>
     );

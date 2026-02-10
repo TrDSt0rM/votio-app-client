@@ -6,25 +6,39 @@
  * @description Page d'accueil de l'application Next.js
  */
 
+const API_URL: string = "http://localhost:8000";
 import { useEffect, useState } from "react";
-import { Poll, APIResponse } from "../types/index.ts"
+import { PollApi } from "../types/mod.ts"
 
 export default function Index() {
-    const [Polls, setPolls] = useState<Poll[]>([]);
-    const [error, setError] = useState<APIResponse | null>(null);
+    const [Polls, setPolls] = useState<PollApi[]>([]);
+
 
     useEffect(() => {
         (async () => {
             try {
-                const response: APIResponse = await function fetch(url: "/polls/:id");
+                // Appel au server pour récupérer les sondages
+                const response = await fetch(`${API_URL}/polls/`);
 
-                if (response.status) {
-                    throw new Error
+                // Vérification du type de contenu avant de parser
+                const contentType = response.headers.get("content-type");
+
+                // gestion des erreurs : si la réponse n'est pas ok (entre 200 et 299),
+                // on essaie de parser le message d'erreur s'il est au format JSON, sinon on affiche un message générique
+                if (!response.ok) {
+                    if (contentType && contentType.includes("application/json")) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || "Erreur API");
+                    } else {
+                        throw new Error(`Erreur serveur: ${response.status}`);
+                    }
                 }
 
-                const data = await response.body();
-            } catch {
+                const data: PollApi[] = await response.json();
 
+                setPolls(data);
+            } catch (err){
+                console.error(err);
             }
         })();
     }, []);
@@ -35,9 +49,16 @@ export default function Index() {
             <p>Click on a poll below to participate.</p>
 
             <ul>
-                {polls.map(
-                    // À compléter
-                    // ...
+                {Polls.length > 0 ? (
+                    Polls.map((poll) => (
+                        <li key={poll.id} className="mb-2">
+                            <a href={`/polls/${poll.id}`} className="text-blue-500 hover:underline">
+                                {poll.description}
+                            </a>
+                        </li>
+                    ))
+                ) : (
+                    <p>Aucun sondage disponible.</p>
                 )}
             </ul>
         </main>
