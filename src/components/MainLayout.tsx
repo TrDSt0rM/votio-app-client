@@ -5,10 +5,10 @@ import { Footer } from "./Footer.tsx";
 
 export default function MainLayout() {
   return (
-    <div className="layout-container">
+    <div className="layout__container">
       <Navbar />
-      
-      <main className="main-content">
+
+      <main className="layout__main">
         <Outlet /> {/* C'est ici que s'affichera index.tsx ou PollDetail.tsx */}
       </main>
 

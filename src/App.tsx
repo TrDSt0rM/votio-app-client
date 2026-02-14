@@ -1,5 +1,5 @@
 /**
- * @type {import('next').NextPage}
+ * @type App: React.FC
  * @file src/App.tsx
  * @author Alex plociennik
  * @date 2026-02-04
@@ -14,16 +14,16 @@ import "./App.css";
 import MainLayout from "./components/MainLayout.tsx";
 
 function App() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route element={<MainLayout />}> 
-            <Route path="/" element={<Index />} />
-            <Route path="/polls/:selectedPoll" element={<PollDetail />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-  
-  export default App;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Index />} />
+          <Route path="/polls/:selectedPoll" element={<PollDetail />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
