@@ -1,0 +1,33 @@
+/* =============== COMPOSANT FOOTER =============== */
+
+.footer {
+  margin-top: 2rem; /* mt-8 */
+  width: 100%; /* w-full */
+  border-top: 1px solid var(--lvl-2); /* border-t border-lvl-2 */
+  background-color: var(--lvl-1); /* bg-lvl-1 */
+  padding-top: 2.5rem; /* py-10 */
+  padding-bottom: 2.5rem;
+  color: var(--lvl-3); /* text-lvl-3 */
+}
+
+.footer__container {
+  font-family: var(--font-tech); /* font-tech */
+  padding-left: 1rem /* 16px */;
+  padding-right: 1rem /* 16px */;
+  text-align: center;
+}
+
+.footer__text {
+  margin-bottom: 0.5rem /* 8px */;
+}
+
+.footer__text-tech-stack {
+  /* text-sm */
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+}
+
+.footer__tech-stack {
+  font-weight: 600; /* font-semibold */
+  color: var(--pastel-blue); /* text-pastel-blue */
+}

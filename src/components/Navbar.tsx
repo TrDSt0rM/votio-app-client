@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { navLinks } from "../data/navigation.ts";
 import { ThemeToggle } from "./ThemeToggle.tsx";
+import "./Navbar.css";
 
 /**
  * Retourne le composant de la barre de navigation.
@@ -45,13 +46,13 @@ export function Navbar() {
         </div>
 
         {/* ACTIONS MOBILE (Thème + Burger) */}
-        <div className="navbar__actions-mobile">
+        <div className="navbar__actions--mobile">
           {/* On duplique le ThemeToggle ici pour qu'il soit aussi dispo sur mobile */}
           <ThemeToggle />
 
           <button
             type="button" // Important pour Deno/React
-            className="navbar__burger-btn"
+            className="navbar__burger--btn"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Ouvrir le menu"
           >
@@ -95,12 +96,12 @@ export function Navbar() {
 
       {/* LE MENU DÉROULANT */}
       {isOpen && (
-        <div className="navbar__mobile-menu">
+        <div className="navbar__mobile--menu">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.href}
-              className="navbar__mobile-link"
+              className="navbar__mobile--link"
               onClick={() => setIsOpen(false)} // Ferme le menu au clic
             >
               {link.name}

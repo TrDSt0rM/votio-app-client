@@ -12,6 +12,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import "./Navbar.css";
 
 export function ThemeToggle() {
   // 1. On initialise l'état

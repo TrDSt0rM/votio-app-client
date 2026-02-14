@@ -6,6 +6,8 @@
  * @description Composant du footer
  */
 
+import "./Footer.css";
+
 /**
  * Retourne le composant du footer des pages.
  * @returns Le composant du footer des pages
